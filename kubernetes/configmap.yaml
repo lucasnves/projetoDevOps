@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: todo-config
+data:
+  DB_HOST: postgres
+  DB_NAME: todo_db
+  DB_USER: lucasneves
+  DB_PORT: "5432"

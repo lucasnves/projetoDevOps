@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: lucasneves
+      POSTGRES_PASSWORD: 12345678
+      POSTGRES_DB: todo_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    image: lucasnves/todo-list-devops-backend
+    ports:
+      - "5001:5001"
+    depends_on:
+      - postgres
+
+  frontend:
+    image: lucasnves/todo-list-devops-frontend
+    ports:
+      - "3000:80"
